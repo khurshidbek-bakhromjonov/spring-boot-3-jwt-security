@@ -20,7 +20,7 @@ public class Application {
     @Bean
     public CommandLineRunner commandLineRunner(AuthenticationService authenticationService) {
         return args -> {
-            var admin = RegisterRequest.builder()
+            RegisterRequest admin = RegisterRequest.builder()
                     .firstname("Admin")
                     .lastname("Admin")
                     .email("admin@mail.com")
@@ -29,7 +29,7 @@ public class Application {
                     .build();
             System.out.println("Admin token: " + authenticationService.register(admin).getAccessToken());
 
-            var manager = RegisterRequest.builder()
+            RegisterRequest manager = RegisterRequest.builder()
                     .firstname("Admin")
                     .lastname("Admin")
                     .email("manager@mail.com")
