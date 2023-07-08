@@ -3,6 +3,9 @@ package docs.openapi.auth;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import docs.openapi.config.JwtService;
+import docs.openapi.exception.InvalidTokenException;
+import docs.openapi.exception.TokenNotFoundException;
+import docs.openapi.exception.UserNotFoundException;
 import docs.openapi.token.Token;
 import docs.openapi.token.TokenRepository;
 import docs.openapi.token.TokenType;
@@ -19,6 +22,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -31,7 +35,7 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
 
     public AuthenticationResponse register(RegisterRequest request) {
-        var user = User.builder()
+        User user = User.builder()
                 .firstname(request.getFirstname())
                 .lastname(request.getLastname())
                 .email(request.getEmail())
@@ -56,7 +60,8 @@ public class AuthenticationService {
                 )
         );
         User user = userRepository.findByEmail(request.getEmail())
-                .orElseThrow();
+                .orElseThrow(() -> new UserNotFoundException("User not found with " + request.getEmail()));
+
         String jwtToken = jwtService.generateToken(user);
         String refreshToken = jwtService.generateRefreshToken(user);
         revokeAllUserTokens(user);
@@ -71,14 +76,20 @@ public class AuthenticationService {
         final String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
         final String refreshToken;
         final String userEmail;
-        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-            return;
+
+        if (Objects.isNull(authHeader)) {
+            throw new InvalidTokenException("Authorization header is null");
+        } else if (!authHeader.startsWith("Bearer ")) {
+            throw new InvalidTokenException("Token is not valid");
         }
+
         refreshToken = authHeader.substring(7);
         userEmail = jwtService.extractUsername(refreshToken);
-        if (userEmail != null) {
+
+        if (Objects.nonNull(userEmail)) {
             User user = this.userRepository.findByEmail(userEmail)
-                    .orElseThrow();
+                    .orElseThrow(() -> new UserNotFoundException("User not found with " + userEmail));
+
             if (jwtService.isTokenValid(refreshToken, user)) {
                 String accessToken = jwtService.generateToken(user);
                 revokeAllUserTokens(user);
@@ -93,7 +104,7 @@ public class AuthenticationService {
     }
 
     private void saveUserToken(User user, String jwtToken) {
-        var token = Token.builder()
+        Token token = Token.builder()
                 .user(user)
                 .token(jwtToken)
                 .tokenType(TokenType.BEARER)
@@ -106,7 +117,7 @@ public class AuthenticationService {
     private void revokeAllUserTokens(User user) {
         List<Token> validUserTokens = tokenRepository.findAllValidTokenByUser(user.getId());
         if (validUserTokens.isEmpty())
-            return;
+            throw new TokenNotFoundException("Tokens not found");
         validUserTokens.forEach(token -> {
             token.setIsExpired(true);
             token.setIsRevoked(true);
