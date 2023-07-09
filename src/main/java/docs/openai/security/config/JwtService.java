@@ -1,4 +1,4 @@
-package docs.openai.config;
+package docs.openai.security.config;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

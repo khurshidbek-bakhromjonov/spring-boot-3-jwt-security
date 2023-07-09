@@ -1,6 +1,6 @@
-package docs.openai.config;
+package docs.openai.security.config;
 
-import docs.openai.token.TokenRepository;
+import docs.openai.security.token.TokenRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

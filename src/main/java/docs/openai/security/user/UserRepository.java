@@ -1,4 +1,4 @@
-package docs.openai.user;
+package docs.openai.security.user;
 
 import java.util.Optional;
 

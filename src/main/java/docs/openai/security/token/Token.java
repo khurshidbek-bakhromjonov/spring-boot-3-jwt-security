@@ -1,6 +1,6 @@
-package docs.openai.token;
+package docs.openai.security.token;
 
-import docs.openai.user.User;
+import docs.openai.security.user.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

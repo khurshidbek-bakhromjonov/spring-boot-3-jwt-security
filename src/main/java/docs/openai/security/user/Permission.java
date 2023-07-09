@@ -1,4 +1,4 @@
-package docs.openai.user;
+package docs.openai.security.user;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

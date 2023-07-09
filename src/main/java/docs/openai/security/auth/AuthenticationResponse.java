@@ -1,4 +1,4 @@
-package docs.openai.auth;
+package docs.openai.security.auth;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;

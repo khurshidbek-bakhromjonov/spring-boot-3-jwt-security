@@ -1,9 +1,9 @@
-package docs.openai.config;
+package docs.openai.security.config;
 
-import docs.openai.exception.InvalidTokenException;
-import docs.openai.exception.TokenNotFoundException;
-import docs.openai.token.Token;
-import docs.openai.token.TokenRepository;
+import docs.openai.security.exception.InvalidTokenException;
+import docs.openai.security.exception.TokenNotFoundException;
+import docs.openai.security.token.Token;
+import docs.openai.security.token.TokenRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;

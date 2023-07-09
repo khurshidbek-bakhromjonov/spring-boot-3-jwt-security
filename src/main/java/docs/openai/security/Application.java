@@ -1,8 +1,8 @@
-package docs.openai;
+package docs.openai.security;
 
-import docs.openai.auth.AuthenticationService;
-import docs.openai.auth.RegisterRequest;
-import docs.openai.user.Role;
+import docs.openai.security.auth.AuthenticationService;
+import docs.openai.security.auth.RegisterRequest;
+import docs.openai.security.user.Role;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package docs.openai.token;
+package docs.openai.security.token;
 
 import java.util.List;
 import java.util.Optional;

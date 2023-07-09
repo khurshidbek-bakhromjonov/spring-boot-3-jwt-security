@@ -1,4 +1,4 @@
-package docs.openai.exception;
+package docs.openai.security.exception;
 
 public class InvalidTokenException extends RuntimeException {
     public InvalidTokenException(String message) {

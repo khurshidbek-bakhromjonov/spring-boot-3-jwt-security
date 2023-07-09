@@ -1,4 +1,4 @@
-package docs.openai.auth;
+package docs.openai.security.auth;
 
 import lombok.Builder;
 import lombok.Getter;
