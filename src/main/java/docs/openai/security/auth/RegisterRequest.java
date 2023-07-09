@@ -1,6 +1,6 @@
-package docs.openai.auth;
+package docs.openai.security.auth;
 
-import docs.openai.user.Role;
+import docs.openai.security.user.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

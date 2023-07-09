@@ -1,14 +1,14 @@
-package docs.openai.auth;
+package docs.openai.security.auth;
 
-import docs.openai.config.JwtService;
-import docs.openai.exception.InvalidTokenException;
-import docs.openai.exception.TokenNotFoundException;
-import docs.openai.exception.UserNotFoundException;
-import docs.openai.token.Token;
-import docs.openai.token.TokenRepository;
-import docs.openai.token.TokenType;
-import docs.openai.user.User;
-import docs.openai.user.UserRepository;
+import docs.openai.security.config.JwtService;
+import docs.openai.security.exception.InvalidTokenException;
+import docs.openai.security.exception.TokenNotFoundException;
+import docs.openai.security.exception.UserNotFoundException;
+import docs.openai.security.token.Token;
+import docs.openai.security.token.TokenRepository;
+import docs.openai.security.token.TokenType;
+import docs.openai.security.user.User;
+import docs.openai.security.user.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

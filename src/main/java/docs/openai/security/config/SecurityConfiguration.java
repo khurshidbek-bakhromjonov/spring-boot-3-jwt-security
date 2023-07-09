@@ -1,7 +1,7 @@
-package docs.openai.config;
+package docs.openai.security.config;
 
-import docs.openai.user.Permission;
-import docs.openai.user.Role;
+import docs.openai.security.user.Permission;
+import docs.openai.security.user.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

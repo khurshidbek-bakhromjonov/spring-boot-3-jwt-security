@@ -1,4 +1,4 @@
-package docs.openai.exception;
+package docs.openai.security.exception;
 
 public class UserNotFoundException extends RuntimeException {
     public UserNotFoundException(String message) {

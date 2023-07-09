@@ -1,6 +1,6 @@
-package docs.openai.config;
+package docs.openai.security.config;
 
-import docs.openai.user.UserRepository;
+import docs.openai.security.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
